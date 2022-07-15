@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 interface Props {
+  height: string;
   img: string;
 }
 
 const StyledBackgroundImage = styled.div<Props>`
   width: 100%;
-  height: 300px;
+  height: ${({ height }) => height};
   background-image: url(${({ img }) => img});
   background-repeat: no-repeat;
   background-size: cover;
