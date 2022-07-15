@@ -20,6 +20,10 @@ export const darkTheme: DefaultTheme = {
 };
 
 export const GlobalStyles = createGlobalStyle`
+  :root {
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
   html {
     box-sizing: border-box;
   }
