@@ -1,7 +1,12 @@
+// Packages
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyles, lightTheme, darkTheme } from "./assets/Global.styled";
+// Styles
+import { GlobalStyles, lightTheme, darkTheme } from "./Global.styled";
+import StyledBackgroundImage from "./styles/BackgroundImage.styled";
+
+// Images and icons
 import bgDesktopLight from "./assets/images/bg-desktop-light.jpg";
 import bgDesktopDark from "./assets/images/bg-desktop-dark.jpg";
 import themeBtnLight from "./assets/icons/icon-sun.svg";
@@ -17,7 +22,9 @@ function App() {
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <img src={theme === "light" ? bgDesktopLight : bgDesktopDark} alt="" />
+      <StyledBackgroundImage
+        img={theme === "light" ? bgDesktopLight : bgDesktopDark}
+      />
       <div>
         <header>
           <h1>T O D O</h1>
