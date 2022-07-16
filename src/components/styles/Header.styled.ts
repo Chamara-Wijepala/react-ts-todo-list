@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const StyledHeader = styled.header`
+import StyledButton from "./Button.styled";
+
+export const StyledHeader = styled.header`
   color: white;
   display: flex;
   justify-content: space-between;
@@ -10,4 +12,7 @@ const StyledHeader = styled.header`
   }
 `;
 
-export default StyledHeader;
+export const StyledToggleThemeButton = styled(StyledButton)`
+  color: white;
+  font-size: 1.2rem;
+`;

@@ -1,23 +1,28 @@
 // Packages
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { ThemeProvider } from "styled-components";
 
 // Components
 import BackgroundImage from "./components/BackgroundImage";
 
-// Styles and icons
+// Styled components
 import { GlobalStyles, lightTheme, darkTheme } from "./Global.styled";
 import StyledContentWrapper from "./components/styles/ContentWrapper.styled";
-import StyledHeader from "./components/styles/Header.styled";
+import {
+  StyledHeader,
+  StyledToggleThemeButton,
+} from "./components/styles/Header.styled";
+
+// Icons
 import themeBtnLight from "./assets/icons/icon-sun.svg";
 import themeBtnDark from "./assets/icons/icon-moon.svg";
 
 function App() {
   const [theme, setTheme] = useState("light");
 
-  function toggleTheme() {
+  const toggleTheme = useCallback(() => {
     setTheme((currentTheme) => (currentTheme === "light" ? "dark" : "light"));
-  }
+  }, []);
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
@@ -26,12 +31,12 @@ function App() {
       <StyledContentWrapper>
         <StyledHeader>
           <h1>T O D O</h1>
-          <button type="button" onClick={toggleTheme}>
+          <StyledToggleThemeButton type="button" onClick={toggleTheme}>
             <img
               src={theme === "light" ? themeBtnLight : themeBtnDark}
               alt="Dark Mode"
             />
-          </button>
+          </StyledToggleThemeButton>
         </StyledHeader>
         <main>
           <div className="Container">
