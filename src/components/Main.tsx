@@ -1,15 +1,19 @@
 import StyledMain from "./styles/Main.styled";
+import {
+  StyledContainer,
+  StyledContainerWithPadding,
+} from "./styles/Container.styled";
 
 function Main() {
   return (
     <StyledMain>
-      <div className="Container">
+      <StyledContainerWithPadding>
         <form>
           <input type="text" placeholder="Create a new todo..." />
         </form>
-      </div>
+      </StyledContainerWithPadding>
 
-      <div className="Container">
+      <StyledContainer>
         <div id="todo-list">
           <div className="Todo">Test 1</div>
           <div className="Todo">Test 2</div>
@@ -25,13 +29,13 @@ function Main() {
           <p>8 items left</p>
           <button type="button">Clear Completed</button>
         </div>
-      </div>
+      </StyledContainer>
 
-      <div className="Container">
+      <StyledContainerWithPadding>
         <button type="button">All</button>
         <button type="button">Active</button>
         <button type="button">Completed</button>
-      </div>
+      </StyledContainerWithPadding>
     </StyledMain>
   );
 }
