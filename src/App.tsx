@@ -8,6 +8,7 @@ import BackgroundImage from "./components/BackgroundImage";
 // Styles and icons
 import { GlobalStyles, lightTheme, darkTheme } from "./Global.styled";
 import StyledContentWrapper from "./components/styles/ContentWrapper.styled";
+import StyledHeader from "./components/styles/Header.styled";
 import themeBtnLight from "./assets/icons/icon-sun.svg";
 import themeBtnDark from "./assets/icons/icon-moon.svg";
 
@@ -23,7 +24,7 @@ function App() {
       <GlobalStyles />
       <BackgroundImage theme={theme} />
       <StyledContentWrapper>
-        <header>
+        <StyledHeader>
           <h1>T O D O</h1>
           <button type="button" onClick={toggleTheme}>
             <img
@@ -31,7 +32,7 @@ function App() {
               alt="Dark Mode"
             />
           </button>
-        </header>
+        </StyledHeader>
         <main>
           <div className="Container">
             <form>
