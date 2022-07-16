@@ -4,18 +4,11 @@ import { ThemeProvider } from "styled-components";
 
 // Components
 import BackgroundImage from "./components/BackgroundImage";
+import Header from "./components/Header";
 
 // Styled components
 import { GlobalStyles, lightTheme, darkTheme } from "./Global.styled";
 import StyledContentWrapper from "./components/styles/ContentWrapper.styled";
-import {
-  StyledHeader,
-  StyledToggleThemeButton,
-} from "./components/styles/Header.styled";
-
-// Icons
-import themeBtnLight from "./assets/icons/icon-sun.svg";
-import themeBtnDark from "./assets/icons/icon-moon.svg";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -29,15 +22,7 @@ function App() {
       <GlobalStyles />
       <BackgroundImage theme={theme} />
       <StyledContentWrapper>
-        <StyledHeader>
-          <h1>T O D O</h1>
-          <StyledToggleThemeButton type="button" onClick={toggleTheme}>
-            <img
-              src={theme === "light" ? themeBtnLight : themeBtnDark}
-              alt={theme === "light" ? "Dark Mode" : "Light Mode"}
-            />
-          </StyledToggleThemeButton>
-        </StyledHeader>
+        <Header theme={theme} toggleTheme={toggleTheme} />
         <main>
           <div className="Container">
             <form>
