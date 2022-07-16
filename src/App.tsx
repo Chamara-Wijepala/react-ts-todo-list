@@ -7,6 +7,7 @@ import BackgroundImage from "./components/BackgroundImage";
 
 // Styles and icons
 import { GlobalStyles, lightTheme, darkTheme } from "./Global.styled";
+import StyledContentWrapper from "./components/styles/ContentWrapper.styled";
 import themeBtnLight from "./assets/icons/icon-sun.svg";
 import themeBtnDark from "./assets/icons/icon-moon.svg";
 
@@ -21,7 +22,7 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <BackgroundImage theme={theme} />
-      <div>
+      <StyledContentWrapper>
         <header>
           <h1>T O D O</h1>
           <button type="button" onClick={toggleTheme}>
@@ -50,7 +51,7 @@ function App() {
             <button type="button">Completed</button>
           </div>
         </main>
-      </div>
+      </StyledContentWrapper>
     </ThemeProvider>
   );
 }
