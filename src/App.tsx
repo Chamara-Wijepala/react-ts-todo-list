@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 // Components
 import BackgroundImage from "./components/BackgroundImage";
 import Header from "./components/Header";
+import Main from "./components/Main";
 
 // Styled components
 import { GlobalStyles, lightTheme, darkTheme } from "./Global.styled";
@@ -23,25 +24,7 @@ function App() {
       <BackgroundImage theme={theme} />
       <StyledContentWrapper>
         <Header theme={theme} toggleTheme={toggleTheme} />
-        <main>
-          <div className="Container">
-            <form>
-              <input type="text" placeholder="Create a new todo..." />
-            </form>
-          </div>
-          <div className="Container">
-            <div id="todo-list" />
-            <div id="button-list">
-              <p />
-              <button type="button">Clear Completed</button>
-            </div>
-          </div>
-          <div className="Container" id="filters">
-            <button type="button">All</button>
-            <button type="button">Active</button>
-            <button type="button">Completed</button>
-          </div>
-        </main>
+        <Main />
       </StyledContentWrapper>
     </ThemeProvider>
   );
