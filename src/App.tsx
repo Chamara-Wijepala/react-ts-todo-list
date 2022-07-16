@@ -34,7 +34,7 @@ function App() {
           <StyledToggleThemeButton type="button" onClick={toggleTheme}>
             <img
               src={theme === "light" ? themeBtnLight : themeBtnDark}
-              alt="Dark Mode"
+              alt={theme === "light" ? "Dark Mode" : "Light Mode"}
             />
           </StyledToggleThemeButton>
         </StyledHeader>
