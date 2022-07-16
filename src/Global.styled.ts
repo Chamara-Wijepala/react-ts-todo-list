@@ -2,8 +2,8 @@
 import { createGlobalStyle, DefaultTheme } from "styled-components";
 
 export const lightTheme: DefaultTheme = {
-  bg_main: "hsl(0, 0%, 98%)",
-  bg_secondary: "hsl(236, 33%, 92%)",
+  bg_main: "#FAFAFA",
+  bg_secondary: "#FFF",
   text_main: "hsl(235, 19%, 35%)",
   text_secondary: "hsl(236, 9%, 61%)",
   text_tertiary: "hsl(233, 11%, 84%)",
@@ -11,8 +11,8 @@ export const lightTheme: DefaultTheme = {
 };
 
 export const darkTheme: DefaultTheme = {
-  bg_main: "hsl(235, 21%, 11%)",
-  bg_secondary: "hsl(235, 24%, 19%)",
+  bg_main: "#201C29",
+  bg_secondary: "#2C273F",
   text_main: "hsl(234, 39%, 85%)",
   text_secondary: "hsl(234, 11%, 52%)",
   text_tertiary: "hsl(233, 14%, 35%)",
