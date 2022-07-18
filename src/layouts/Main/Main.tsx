@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import StyledMain from "./styles/Main.styled";
 import StyledContainer from "./styles/Container.styled";
@@ -18,12 +19,13 @@ function Main() {
 
     if (task !== "") {
       const item = {
-        id: 1,
+        id: uuidv4(),
         task,
         status: false,
       };
 
       setTodoList((prevItems) => [...prevItems, item]);
+      setTask("");
     }
   }
 
