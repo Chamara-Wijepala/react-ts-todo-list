@@ -1,11 +1,11 @@
 import Media from "react-media";
 
-import StyledBackgroundImage from "./styles/BackgroundImage.styled";
+import StyledBackgroundImage from "./BackgroundImage.styled";
 
-import bgDesktopLight from "../assets/images/bg-desktop-light.jpg";
-import bgDesktopDark from "../assets/images/bg-desktop-dark.jpg";
-import bgMobileLight from "../assets/images/bg-mobile-light.jpg";
-import bgMobileDark from "../assets/images/bg-mobile-dark.jpg";
+import bgDesktopLight from "../../assets/images/bg-desktop-light.jpg";
+import bgDesktopDark from "../../assets/images/bg-desktop-dark.jpg";
+import bgMobileLight from "../../assets/images/bg-mobile-light.jpg";
+import bgMobileDark from "../../assets/images/bg-mobile-dark.jpg";
 
 interface Props {
   theme: string;

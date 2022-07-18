@@ -1,6 +1,7 @@
-import { StyledHeader, StyledToggleThemeButton } from "./styles/Header.styled";
-import themeBtnLight from "../assets/icons/icon-sun.svg";
-import themeBtnDark from "../assets/icons/icon-moon.svg";
+import { StyledHeader, StyledToggleThemeButton } from "./Header.styled";
+
+import themeBtnLight from "../../assets/icons/icon-sun.svg";
+import themeBtnDark from "../../assets/icons/icon-moon.svg";
 
 interface Props {
   theme: string;

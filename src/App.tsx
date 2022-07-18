@@ -3,9 +3,9 @@ import { useState, useCallback } from "react";
 import { ThemeProvider } from "styled-components";
 
 // Components
-import BackgroundImage from "./components/BackgroundImage";
-import Header from "./components/Header";
-import Main from "./components/Main";
+import BackgroundImage from "./layouts/BackgroundImage/BackgroundImage";
+import Header from "./layouts/Header/Header";
+import Main from "./layouts/Main/Main";
 
 // Styled components
 import { GlobalStyles, lightTheme, darkTheme } from "./Global.styled";
