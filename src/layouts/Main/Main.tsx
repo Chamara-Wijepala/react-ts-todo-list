@@ -1,12 +1,42 @@
+import { ChangeEvent, FormEvent, useState } from "react";
+
 import StyledMain from "./styles/Main.styled";
 import StyledContainer from "./styles/Container.styled";
 
 function Main() {
+  const [task, setTask] = useState("");
+  const [todoList, setTodoList] = useState<object[]>([]);
+
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    setTask(event.target.value);
+  }
+
+  // On form submit, create an item object and add it to todoList state if user
+  // input is not empty
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (task !== "") {
+      const item = {
+        id: 1,
+        task,
+        status: false,
+      };
+
+      setTodoList((prevItems) => [...prevItems, item]);
+    }
+  }
+
   return (
     <StyledMain>
       <StyledContainer padding="1rem">
-        <form>
-          <input type="text" placeholder="Create a new todo..." />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Create a new todo..."
+            onChange={handleChange}
+            value={task}
+          />
         </form>
       </StyledContainer>
 
