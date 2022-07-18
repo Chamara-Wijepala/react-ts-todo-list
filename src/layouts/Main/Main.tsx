@@ -4,9 +4,15 @@ import { v4 as uuidv4 } from "uuid";
 import StyledMain from "./styles/Main.styled";
 import StyledContainer from "./styles/Container.styled";
 
+interface ITodo {
+  id: string;
+  task: string;
+  status: boolean;
+}
+
 function Main() {
   const [task, setTask] = useState("");
-  const [todoList, setTodoList] = useState<object[]>([]);
+  const [todoList, setTodoList] = useState<ITodo[]>([]);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setTask(event.target.value);
@@ -44,14 +50,13 @@ function Main() {
 
       <StyledContainer>
         <div id="todo-list">
-          <div className="Todo">Test 1</div>
-          <div className="Todo">Test 2</div>
-          <div className="Todo">Test 3</div>
-          <div className="Todo">Test 4</div>
-          <div className="Todo">Test 5</div>
-          <div className="Todo">Test 6</div>
-          <div className="Todo">Test 7</div>
-          <div className="Todo">Test 8</div>
+          {todoList.map((item) => {
+            return (
+              <div id={item.id} key={item.id}>
+                {item.task}
+              </div>
+            );
+          })}
         </div>
 
         <div id="button-list">
