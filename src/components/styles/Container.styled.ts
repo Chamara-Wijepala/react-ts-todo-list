@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
-export const StyledContainer = styled.div`
+interface Props {
+  padding?: string;
+}
+
+const StyledContainer = styled.div<Props>`
   border-radius: 5px;
   background-color: ${({ theme }) => theme.bg_secondary};
+  padding: ${({ padding }) => padding};
 `;
 
-export const StyledContainerWithPadding = styled(StyledContainer)`
-  padding: 1rem;
-`;
+export default StyledContainer;
