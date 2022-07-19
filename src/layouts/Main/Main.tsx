@@ -1,8 +1,15 @@
-import { ChangeEvent, FormEvent, useState, useCallback } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  MouseEvent,
+  useState,
+  useCallback,
+} from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import Task from "./components/Task";
 import Checkbox from "./components/Checkbox";
+import DeleteButton from "./components/DeleteButton";
 
 import StyledMain from "./styles/Main.styled";
 import StyledContainer from "./styles/Container.styled";
@@ -53,6 +60,20 @@ function Main() {
     [todoList]
   );
 
+  // Deletes a task from todoList using filter method
+  const deleteTask = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      const { id } = event.target as HTMLElement;
+
+      const updatedList = todoList.filter((item) => {
+        return !(item.id === id);
+      });
+
+      setTodoList(updatedList);
+    },
+    [todoList]
+  );
+
   return (
     <StyledMain>
       <StyledContainer padding="1rem">
@@ -76,6 +97,7 @@ function Main() {
                 handleStatusChange={handleStatusChange}
               />
               <Task task={item.task} status={item.status} />
+              <DeleteButton id={item.id} deleteTask={deleteTask} />
             </div>
           ))}
         </div>
