@@ -1,14 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
+import Todo from "./components/Todo";
+
 import StyledMain from "./styles/Main.styled";
 import StyledContainer from "./styles/Container.styled";
 
-interface ITodo {
-  id: string;
-  task: string;
-  status: boolean;
-}
+import ITodo from "../../interfaces";
 
 function Main() {
   const [task, setTask] = useState("");
@@ -27,7 +25,7 @@ function Main() {
       const item = {
         id: uuidv4(),
         task,
-        status: false,
+        status: true,
       };
 
       setTodoList((prevItems) => [...prevItems, item]);
@@ -52,9 +50,12 @@ function Main() {
         <div id="todo-list">
           {todoList.map((item) => {
             return (
-              <div id={item.id} key={item.id}>
-                {item.task}
-              </div>
+              <Todo
+                key={item.id}
+                id={item.id}
+                task={item.task}
+                status={item.status}
+              />
             );
           })}
         </div>
