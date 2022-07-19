@@ -67,17 +67,12 @@ function Main() {
 
       <StyledContainer>
         <div id="todo-list">
-          {todoList.map((item) => {
-            return (
-              <div key={item.id}>
-                <Checkbox
-                  id={item.id}
-                  handleStatusChange={handleStatusChange}
-                />
-                <Task task={item.task} status={item.status} />
-              </div>
-            );
-          })}
+          {todoList.map((item) => (
+            <div key={item.id}>
+              <Checkbox id={item.id} handleStatusChange={handleStatusChange} />
+              <Task task={item.task} status={item.status} />
+            </div>
+          ))}
         </div>
 
         <div id="button-list">
