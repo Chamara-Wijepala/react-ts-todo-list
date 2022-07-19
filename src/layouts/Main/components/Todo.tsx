@@ -1,10 +1,13 @@
 import { StyledTask, StyledTaskComplete } from "../styles/Task.styled";
 
-import ITodo from "../../../interfaces";
+interface Props {
+  task: string;
+  status: boolean;
+}
 
-function Todo({ id, task, status }: ITodo) {
+function Todo({ task, status }: Props) {
   return (
-    <div id={id}>
+    <div>
       {status ? (
         <StyledTaskComplete>{task}</StyledTaskComplete>
       ) : (
