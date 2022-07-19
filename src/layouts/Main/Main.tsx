@@ -34,8 +34,9 @@ function Main() {
     }
   }
 
-  // On checkbox toggle create new array with status value negated on item
-  // whose id matches the id of the input
+  // On checkbox toggle, create new array with status value negated on item
+  // whose id matches the id of the input. Then set this array as the new
+  // todoList state
   const handleStatusChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const { id } = event.target;
