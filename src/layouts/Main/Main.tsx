@@ -65,7 +65,7 @@ function Main() {
         </form>
       </StyledContainer>
 
-      <StyledContainer>
+      <StyledContainer minHeight="320px">
         <div id="todo-list">
           {todoList.map((item) => (
             <div key={item.id}>
