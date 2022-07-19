@@ -5,7 +5,7 @@ interface Props {
   status: boolean;
 }
 
-function Todo({ task, status }: Props) {
+function Task({ task, status }: Props) {
   return (
     <div>
       {status ? (
@@ -17,4 +17,4 @@ function Todo({ task, status }: Props) {
   );
 }
 
-export default Todo;
+export default Task;

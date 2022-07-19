@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState, useCallback } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import Todo from "./components/Todo";
+import Task from "./components/Task";
 import Checkbox from "./components/Checkbox";
 
 import StyledMain from "./styles/Main.styled";
@@ -74,7 +74,7 @@ function Main() {
                   id={item.id}
                   handleStatusChange={handleStatusChange}
                 />
-                <Todo task={item.task} status={item.status} />
+                <Task task={item.task} status={item.status} />
               </div>
             );
           })}
