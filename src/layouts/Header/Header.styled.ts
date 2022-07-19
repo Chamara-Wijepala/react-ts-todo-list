@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import StyledButton from "../../components/styles/Button.styled";
+import StyledButton from "../../assets/styles/Button.styled";
 
 export const StyledHeader = styled.header`
   color: white;

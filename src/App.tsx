@@ -8,8 +8,12 @@ import Header from "./layouts/Header/Header";
 import Main from "./layouts/Main/Main";
 
 // Styled components
-import { GlobalStyles, lightTheme, darkTheme } from "./Global.styled";
-import StyledContentWrapper from "./components/styles/ContentWrapper.styled";
+import {
+  GlobalStyles,
+  lightTheme,
+  darkTheme,
+} from "./assets/styles/Global.styled";
+import StyledContentWrapper from "./assets/styles/ContentWrapper.styled";
 
 function App() {
   const [theme, setTheme] = useState("light");
