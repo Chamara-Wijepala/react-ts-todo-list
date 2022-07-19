@@ -1,4 +1,4 @@
-import { StyledTask, StyledTaskComplete } from "../styles/Task";
+import { StyledTask, StyledTaskComplete } from "../styles/Task.styled";
 
 import ITodo from "../../../interfaces";
 
