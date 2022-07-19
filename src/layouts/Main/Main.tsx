@@ -69,7 +69,11 @@ function Main() {
         <div id="todo-list">
           {todoList.map((item) => (
             <div key={item.id}>
-              <Checkbox id={item.id} handleStatusChange={handleStatusChange} />
+              <Checkbox
+                id={item.id}
+                status={item.status}
+                handleStatusChange={handleStatusChange}
+              />
               <Task task={item.task} status={item.status} />
             </div>
           ))}
