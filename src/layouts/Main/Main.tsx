@@ -1,7 +1,8 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useCallback } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import Todo from "./components/Todo";
+import Checkbox from "./components/Checkbox";
 
 import StyledMain from "./styles/Main.styled";
 import StyledContainer from "./styles/Container.styled";
@@ -25,13 +26,31 @@ function Main() {
       const item = {
         id: uuidv4(),
         task,
-        status: true,
+        status: false,
       };
 
       setTodoList((prevItems) => [...prevItems, item]);
       setTask("");
     }
   }
+
+  // On checkbox toggle create new array with status value negated on item
+  // whose id matches the id of the input
+  const handleStatusChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { id } = event.target;
+
+      const updatedList = todoList.map((item) => {
+        if (item.id === id) {
+          return { ...item, status: !item.status };
+        }
+        return item;
+      });
+
+      setTodoList(updatedList);
+    },
+    [todoList]
+  );
 
   return (
     <StyledMain>
@@ -50,12 +69,13 @@ function Main() {
         <div id="todo-list">
           {todoList.map((item) => {
             return (
-              <Todo
-                key={item.id}
-                id={item.id}
-                task={item.task}
-                status={item.status}
-              />
+              <div key={item.id}>
+                <Checkbox
+                  id={item.id}
+                  handleStatusChange={handleStatusChange}
+                />
+                <Todo task={item.task} status={item.status} />
+              </div>
             );
           })}
         </div>
