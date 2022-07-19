@@ -28,7 +28,9 @@ function Checkbox({ id, status, handleStatusChange }: Props) {
           <img src={checkIcon} alt="" />
         </StyledCheckboxActive>
       ) : (
-        <StyledCheckbox aria-hidden="true" />
+        <StyledCheckbox aria-hidden="true">
+          <div />
+        </StyledCheckbox>
       )}
     </CheckboxContainer>
   );

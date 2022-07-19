@@ -18,10 +18,21 @@ export const CheckboxContainer = styled.label`
 export const StyledCheckbox = styled.div`
   height: 1.5rem;
   width: 1.5rem;
-  background-color: ${({ theme }) => theme.bg_secondary};
-  border: 1px solid ${({ theme }) => theme.text_tertiary};
+  padding: 1px;
   border-radius: 50%;
+  background-color: ${({ theme }) => theme.text_tertiary};
   cursor: pointer;
+
+  :hover {
+    background-image: linear-gradient(135deg, #57ddff, #c058f3);
+  }
+
+  div {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.bg_secondary};
+  }
 `;
 
 export const StyledCheckboxActive = styled(StyledCheckbox)`
