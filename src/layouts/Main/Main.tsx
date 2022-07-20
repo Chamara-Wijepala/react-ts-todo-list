@@ -86,6 +86,7 @@ function Main() {
     }
   }, []);
 
+  // Filters todoList when user selects a filter
   useEffect(() => {
     let updatedList = todoList;
 
