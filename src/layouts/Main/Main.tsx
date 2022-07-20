@@ -103,6 +103,14 @@ function Main() {
     setListToRender(updatedList);
   }, [filter, todoList]);
 
+  const clearCompletedTasks = useCallback(() => {
+    const updatedList = todoList.filter((item) => {
+      return item.status === false;
+    });
+
+    setTodoList(updatedList);
+  }, [todoList]);
+
   return (
     <StyledMain>
       <StyledContainer>
@@ -149,7 +157,9 @@ function Main() {
             )}
           />
 
-          <StyledButton type="button">Clear Completed</StyledButton>
+          <StyledButton type="button" onClick={clearCompletedTasks}>
+            Clear Completed
+          </StyledButton>
         </StyledButtonList>
       </StyledContainer>
 
