@@ -1,5 +1,6 @@
 import { MouseEvent } from "react";
 
+import StyledDeleteButton from "../styles/DeleteButton.styled";
 import CrossIcon from "../../../assets/icons/icon-cross.svg";
 
 interface Props {
@@ -9,9 +10,9 @@ interface Props {
 
 function DeleteButton({ id, deleteTask }: Props) {
   return (
-    <button type="button" onClick={deleteTask}>
+    <StyledDeleteButton type="button" onClick={deleteTask}>
       <img id={id} src={CrossIcon} alt="Delete Task" />
-    </button>
+    </StyledDeleteButton>
   );
 }
 
