@@ -1,7 +1,6 @@
 import Media from "react-media";
 
 import StyledBackgroundImage from "./BackgroundImage.styled";
-
 import bgDesktopLight from "../../assets/images/bg-desktop-light.jpg";
 import bgDesktopDark from "../../assets/images/bg-desktop-dark.jpg";
 import bgMobileLight from "../../assets/images/bg-mobile-light.jpg";

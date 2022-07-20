@@ -5,7 +5,6 @@ import {
   StyledCheckbox,
   StyledCheckboxActive,
 } from "../styles/Checkbox.styled";
-
 import checkIcon from "../../../assets/icons/icon-check.svg";
 
 interface Props {

@@ -10,10 +10,8 @@ import { v4 as uuidv4 } from "uuid";
 import Task from "./components/Task";
 import Checkbox from "./components/Checkbox";
 import DeleteButton from "./components/DeleteButton";
-
 import StyledMain from "./styles/Main.styled";
 import StyledContainer from "./styles/Container.styled";
-
 import ITodo from "../../interfaces";
 
 function Main() {
@@ -24,8 +22,6 @@ function Main() {
     setTask(event.target.value);
   }
 
-  // On form submit, create an item object and add it to todoList state if user
-  // input is not empty
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -41,9 +37,6 @@ function Main() {
     }
   }
 
-  // On checkbox toggle, create new array with status value negated on item
-  // whose id matches the id of the input. Then set this array as the new
-  // todoList state
   const handleStatusChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const { id } = event.target;
@@ -60,7 +53,6 @@ function Main() {
     [todoList]
   );
 
-  // Deletes a task from todoList using filter method
   const deleteTask = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       const { id } = event.target as HTMLElement;

@@ -1,13 +1,9 @@
-// Packages
 import { useState, useCallback } from "react";
 import { ThemeProvider } from "styled-components";
 
-// Components
 import BackgroundImage from "./layouts/BackgroundImage/BackgroundImage";
 import Header from "./layouts/Header/Header";
 import Main from "./layouts/Main/Main";
-
-// Styled components
 import {
   GlobalStyles,
   lightTheme,
