@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledTask = styled.p`
   font-size: 18px;
+  overflow-wrap: anywhere;
   color: ${({ theme }) => theme.text_main};
 `;
 
