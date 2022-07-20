@@ -17,6 +17,7 @@ import StyledTodo from "./styles/Todo.styled";
 import StyledButtonList from "./styles/ButtonList.styled";
 import StyledFilterButtonList from "./styles/FilterButtonList";
 import StyledButton from "../../assets/styles/Button.styled";
+import StyledForm from "./styles/Form.styled";
 import ITodo from "../../interfaces";
 
 function Main() {
@@ -27,20 +28,23 @@ function Main() {
     setTask(event.target.value);
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
 
-    if (task !== "") {
-      const item = {
-        id: uuidv4(),
-        task,
-        status: false,
-      };
+      if (task !== "") {
+        const item = {
+          id: uuidv4(),
+          task,
+          status: false,
+        };
 
-      setTodoList((prevItems) => [...prevItems, item]);
-      setTask("");
-    }
-  }
+        setTodoList((prevItems) => [...prevItems, item]);
+        setTask("");
+      }
+    },
+    [task]
+  );
 
   const handleStatusChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -73,15 +77,17 @@ function Main() {
 
   return (
     <StyledMain>
-      <StyledContainer padding="1rem">
-        <form onSubmit={handleSubmit}>
+      <StyledContainer>
+        <StyledForm onSubmit={handleSubmit}>
+          <div />
           <input
+            id="input"
             type="text"
             placeholder="Create a new todo..."
             onChange={handleChange}
             value={task}
           />
-        </form>
+        </StyledForm>
       </StyledContainer>
 
       <StyledContainer>
