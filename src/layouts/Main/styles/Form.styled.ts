@@ -17,6 +17,7 @@ const StyledForm = styled.form`
     outline: none;
     border: none;
     font-size: 18px;
+    width: 100%;
     color: ${({ theme }) => theme.text_main};
     background-color: ${({ theme }) => theme.bg_secondary};
   }
