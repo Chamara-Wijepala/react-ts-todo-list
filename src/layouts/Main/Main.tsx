@@ -6,6 +6,7 @@ import {
   useCallback,
 } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Media from "react-media";
 
 import Task from "./components/Task";
 import Checkbox from "./components/Checkbox";
@@ -13,6 +14,9 @@ import DeleteButton from "./components/DeleteButton";
 import StyledMain from "./styles/Main.styled";
 import StyledContainer from "./styles/Container.styled";
 import StyledTodo from "./styles/Todo.styled";
+import StyledButtonList from "./styles/ButtonList.styled";
+import StyledFilterButtonList from "./styles/FilterButtonList";
+import StyledButton from "../../assets/styles/Button.styled";
 import ITodo from "../../interfaces";
 
 function Main() {
@@ -80,7 +84,7 @@ function Main() {
         </form>
       </StyledContainer>
 
-      <StyledContainer minHeight="320px">
+      <StyledContainer>
         <div>
           {todoList.map((item) => (
             <StyledTodo key={item.id}>
@@ -95,17 +99,41 @@ function Main() {
           ))}
         </div>
 
-        <div id="button-list">
-          <p>8 items left</p>
-          <button type="button">Clear Completed</button>
-        </div>
+        <StyledButtonList>
+          <p>
+            {todoList.length} items {todoList.length > 0 && "left"}
+          </p>
+          <Media
+            query="(min-width: 767px)"
+            render={() => (
+              <StyledFilterButtonList>
+                <StyledButton type="button">All</StyledButton>
+                <StyledButton type="button">Active</StyledButton>
+                <StyledButton type="button">Completed</StyledButton>
+              </StyledFilterButtonList>
+            )}
+          />
+
+          <StyledButton type="button">Clear Completed</StyledButton>
+        </StyledButtonList>
       </StyledContainer>
 
-      <StyledContainer padding="1rem">
-        <button type="button">All</button>
-        <button type="button">Active</button>
-        <button type="button">Completed</button>
-      </StyledContainer>
+      <Media
+        query="(max-width: 767px)"
+        render={() => (
+          <StyledContainer
+            padding="1rem"
+            display="flex"
+            justifyContent="center"
+          >
+            <StyledFilterButtonList>
+              <StyledButton type="button">All</StyledButton>
+              <StyledButton type="button">Active</StyledButton>
+              <StyledButton type="button">Completed</StyledButton>
+            </StyledFilterButtonList>
+          </StyledContainer>
+        )}
+      />
     </StyledMain>
   );
 }

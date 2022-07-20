@@ -7,7 +7,7 @@ export const lightTheme: DefaultTheme = {
   text_main: "hsl(235, 19%, 35%)",
   text_secondary: "hsl(236, 9%, 61%)",
   text_tertiary: "hsl(233, 11%, 84%)",
-  text_hover: "hsl(235, 19%, 35%)",
+  text_hover: "#000",
 };
 
 export const darkTheme: DefaultTheme = {
@@ -16,7 +16,7 @@ export const darkTheme: DefaultTheme = {
   text_main: "hsl(234, 39%, 85%)",
   text_secondary: "hsl(234, 11%, 52%)",
   text_tertiary: "hsl(233, 14%, 35%)",
-  text_hover: "hsl(236, 33%, 92%)",
+  text_hover: "#FFF",
 };
 
 export const GlobalStyles = createGlobalStyle`
