@@ -101,7 +101,8 @@ function Main() {
 
         <StyledButtonList>
           <p>
-            {todoList.length} items {todoList.length > 0 && "left"}
+            {todoList.length} {todoList.length === 1 ? "item" : "items"}{" "}
+            {todoList.length > 0 && "left"}
           </p>
           <Media
             query="(min-width: 767px)"
