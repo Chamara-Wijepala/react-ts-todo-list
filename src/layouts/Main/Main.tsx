@@ -3,6 +3,7 @@ import {
   FormEvent,
   MouseEvent,
   useState,
+  useEffect,
   useCallback,
 } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -23,6 +24,8 @@ import ITodo from "../../interfaces";
 function Main() {
   const [task, setTask] = useState("");
   const [todoList, setTodoList] = useState<ITodo[]>([]);
+  const [listToRender, setListToRender] = useState(todoList);
+  const [filter, setFilter] = useState("");
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setTask(event.target.value);
@@ -75,6 +78,30 @@ function Main() {
     [todoList]
   );
 
+  const changeFilter = useCallback((event: MouseEvent<HTMLDivElement>) => {
+    const { textContent } = event.target as HTMLElement;
+
+    if (textContent) {
+      setFilter(textContent);
+    }
+  }, []);
+
+  useEffect(() => {
+    let updatedList = todoList;
+
+    if (filter === "Active") {
+      updatedList = todoList.filter((item) => {
+        return item.status === false;
+      });
+    } else if (filter === "Completed") {
+      updatedList = todoList.filter((item) => {
+        return item.status === true;
+      });
+    }
+
+    setListToRender(updatedList);
+  }, [filter, todoList]);
+
   return (
     <StyledMain>
       <StyledContainer>
@@ -92,7 +119,7 @@ function Main() {
 
       <StyledContainer>
         <div>
-          {todoList.map((item) => (
+          {listToRender.map((item) => (
             <StyledTodo key={item.id}>
               <Checkbox
                 id={item.id}
@@ -107,13 +134,13 @@ function Main() {
 
         <StyledButtonList>
           <p>
-            {todoList.length} {todoList.length === 1 ? "item" : "items"}{" "}
-            {todoList.length > 0 && "left"}
+            {listToRender.length} {listToRender.length === 1 ? "item" : "items"}{" "}
+            {listToRender.length > 0 && "left"}
           </p>
           <Media
             query="(min-width: 767px)"
             render={() => (
-              <StyledFilterButtonList>
+              <StyledFilterButtonList onClick={changeFilter}>
                 <StyledButton type="button">All</StyledButton>
                 <StyledButton type="button">Active</StyledButton>
                 <StyledButton type="button">Completed</StyledButton>
@@ -133,7 +160,7 @@ function Main() {
             display="flex"
             justifyContent="center"
           >
-            <StyledFilterButtonList>
+            <StyledFilterButtonList onClick={changeFilter}>
               <StyledButton type="button">All</StyledButton>
               <StyledButton type="button">Active</StyledButton>
               <StyledButton type="button">Completed</StyledButton>
