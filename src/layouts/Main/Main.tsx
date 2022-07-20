@@ -12,6 +12,7 @@ import Checkbox from "./components/Checkbox";
 import DeleteButton from "./components/DeleteButton";
 import StyledMain from "./styles/Main.styled";
 import StyledContainer from "./styles/Container.styled";
+import StyledTodo from "./styles/Todo.styled";
 import ITodo from "../../interfaces";
 
 function Main() {
@@ -80,9 +81,9 @@ function Main() {
       </StyledContainer>
 
       <StyledContainer minHeight="320px">
-        <div id="todo-list">
+        <div>
           {todoList.map((item) => (
-            <div key={item.id}>
+            <StyledTodo key={item.id}>
               <Checkbox
                 id={item.id}
                 status={item.status}
@@ -90,7 +91,7 @@ function Main() {
               />
               <Task task={item.task} status={item.status} />
               <DeleteButton id={item.id} deleteTask={deleteTask} />
-            </div>
+            </StyledTodo>
           ))}
         </div>
 
