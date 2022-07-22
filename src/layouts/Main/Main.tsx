@@ -12,11 +12,11 @@ import Media from "react-media";
 import Task from "./components/Task";
 import Checkbox from "./components/Checkbox";
 import DeleteButton from "./components/DeleteButton";
+import FilterButtonList from "./components/FilterButtonList";
 import StyledMain from "./styles/Main.styled";
 import StyledContainer from "./styles/Container.styled";
 import StyledTodo from "./styles/Todo.styled";
 import StyledButtonList from "./styles/ButtonList.styled";
-import StyledFilterButtonList from "./styles/FilterButtonList";
 import StyledButton from "../../assets/styles/Button.styled";
 import StyledForm from "./styles/Form.styled";
 import ITodo from "../../interfaces";
@@ -25,7 +25,7 @@ function Main() {
   const [task, setTask] = useState("");
   const [todoList, setTodoList] = useState<ITodo[]>([]);
   const [listToRender, setListToRender] = useState(todoList);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("All");
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setTask(event.target.value);
@@ -146,14 +146,11 @@ function Main() {
             {listToRender.length} {listToRender.length === 1 ? "item" : "items"}{" "}
             {listToRender.length > 0 && "left"}
           </p>
+
           <Media
             query="(min-width: 767px)"
             render={() => (
-              <StyledFilterButtonList onClick={changeFilter}>
-                <StyledButton type="button">All</StyledButton>
-                <StyledButton type="button">Active</StyledButton>
-                <StyledButton type="button">Completed</StyledButton>
-              </StyledFilterButtonList>
+              <FilterButtonList filter={filter} changeFilter={changeFilter} />
             )}
           />
 
@@ -171,11 +168,7 @@ function Main() {
             display="flex"
             justifyContent="center"
           >
-            <StyledFilterButtonList onClick={changeFilter}>
-              <StyledButton type="button">All</StyledButton>
-              <StyledButton type="button">Active</StyledButton>
-              <StyledButton type="button">Completed</StyledButton>
-            </StyledFilterButtonList>
+            <FilterButtonList filter={filter} changeFilter={changeFilter} />
           </StyledContainer>
         )}
       />
