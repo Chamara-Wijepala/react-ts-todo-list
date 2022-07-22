@@ -78,14 +78,6 @@ function Main() {
     [todoList]
   );
 
-  const changeFilter = useCallback((event: MouseEvent<HTMLDivElement>) => {
-    const { textContent } = event.target as HTMLElement;
-
-    if (textContent) {
-      setFilter(textContent);
-    }
-  }, []);
-
   // Filters todoList when user selects a filter
   useEffect(() => {
     let updatedList = todoList;
@@ -150,7 +142,7 @@ function Main() {
           <Media
             query="(min-width: 767px)"
             render={() => (
-              <FilterButtonList filter={filter} changeFilter={changeFilter} />
+              <FilterButtonList filter={filter} setFilter={setFilter} />
             )}
           />
 
@@ -168,7 +160,7 @@ function Main() {
             display="flex"
             justifyContent="center"
           >
-            <FilterButtonList filter={filter} changeFilter={changeFilter} />
+            <FilterButtonList filter={filter} setFilter={setFilter} />
           </StyledContainer>
         )}
       />

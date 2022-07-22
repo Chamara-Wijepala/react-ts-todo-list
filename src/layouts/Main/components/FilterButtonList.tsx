@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { MouseEvent, Dispatch, useCallback } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import StyledFilterButtonList from "../styles/FilterButtonList";
@@ -6,12 +6,23 @@ import StyledButton from "../../../assets/styles/Button.styled";
 
 interface Props {
   filter: string;
-  changeFilter: (event: MouseEvent<HTMLDivElement>) => void;
+  setFilter: Dispatch<React.SetStateAction<string>>;
 }
 
 const buttons = ["All", "Active", "Completed"];
 
-function FilterButtonList({ filter, changeFilter }: Props) {
+function FilterButtonList({ filter, setFilter }: Props) {
+  const changeFilter = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      const { textContent } = event.target as HTMLElement;
+
+      if (textContent) {
+        setFilter(textContent);
+      }
+    },
+    [setFilter]
+  );
+
   return (
     <StyledFilterButtonList onClick={changeFilter}>
       {buttons.map((button) =>
