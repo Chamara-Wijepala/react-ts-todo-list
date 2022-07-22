@@ -1,53 +1,32 @@
 import {
   ChangeEvent,
-  FormEvent,
   MouseEvent,
   useState,
   useEffect,
   useCallback,
+  Dispatch,
 } from "react";
-import { v4 as uuidv4 } from "uuid";
 import Media from "react-media";
 
 import Task from "./components/Task";
 import Checkbox from "./components/Checkbox";
 import DeleteButton from "./components/DeleteButton";
 import FilterButtonList from "./components/FilterButtonList";
-import StyledMain from "./styles/Main.styled";
-import StyledContainer from "./styles/Container.styled";
+import StyledContainer from "../../assets/styles/Container.styled";
 import StyledTodo from "./styles/Todo.styled";
 import StyledButtonList from "./styles/ButtonList.styled";
 import StyledButton from "../../assets/styles/Button.styled";
-import StyledForm from "./styles/Form.styled";
+
 import ITodo from "../../interfaces";
 
-function Main() {
-  const [task, setTask] = useState("");
-  const [todoList, setTodoList] = useState<ITodo[]>([]);
+interface Props {
+  todoList: ITodo[];
+  setTodoList: Dispatch<React.SetStateAction<ITodo[]>>;
+}
+
+function Main({ todoList, setTodoList }: Props) {
   const [listToRender, setListToRender] = useState(todoList);
   const [filter, setFilter] = useState("All");
-
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    setTask(event.target.value);
-  }
-
-  const handleSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-
-      if (task !== "") {
-        const item = {
-          id: uuidv4(),
-          task,
-          status: false,
-        };
-
-        setTodoList((prevItems) => [...prevItems, item]);
-        setTask("");
-      }
-    },
-    [task]
-  );
 
   const handleStatusChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -112,20 +91,7 @@ function Main() {
   }, [todoList]);
 
   return (
-    <StyledMain>
-      <StyledContainer>
-        <StyledForm onSubmit={handleSubmit}>
-          <div />
-          <input
-            id="input"
-            type="text"
-            placeholder="Create a new todo..."
-            onChange={handleChange}
-            value={task}
-          />
-        </StyledForm>
-      </StyledContainer>
-
+    <>
       <StyledContainer>
         <div>
           {listToRender.map((item) => (
@@ -172,7 +138,7 @@ function Main() {
           </StyledContainer>
         )}
       />
-    </StyledMain>
+    </>
   );
 }
 
