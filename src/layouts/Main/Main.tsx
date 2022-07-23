@@ -58,9 +58,10 @@ function Main({ todoList, setTodoList }: Props) {
   );
 
   const changeFilter = useCallback((event: MouseEvent<HTMLDivElement>) => {
-    const { textContent } = event.target as HTMLElement;
+    const targetElement = event.target as HTMLElement;
+    const { textContent } = targetElement;
 
-    if (textContent) {
+    if (targetElement.nodeName === "BUTTON" && textContent) {
       setFilter(textContent);
     }
   }, []);
